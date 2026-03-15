@@ -46,6 +46,15 @@
       padding: 0 6vw;
       background: var(--bg);
       border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+
+    /* Left side: tabs + back btn */
+    #header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
     }
 
     .brand {
@@ -62,6 +71,7 @@
       display: flex;
       gap: 0;
       border: 1px solid var(--border2);
+      flex-shrink: 0;
     }
 
     .tab-btn {
@@ -76,6 +86,7 @@
       cursor: pointer;
       transition: color 0.2s, background 0.2s;
       line-height: 1;
+      white-space: nowrap;
     }
 
     .tab-btn + .tab-btn { border-left: 1px solid var(--border2); }
@@ -99,6 +110,7 @@
       align-items: center;
       gap: 0.5rem;
       transition: color 0.2s;
+      white-space: nowrap;
     }
     #back-btn:hover { color: var(--amber); }
     #back-btn.hidden { display: none; }
@@ -379,14 +391,14 @@
 
   <!-- HEADER -->
   <header id="site-header">
-    <a class="brand" href="/">B<span>.</span>Sapru</a>
-    <div id="header-right">
+    <div id="header-left">
       <div id="tab-nav">
         <button class="tab-btn active" data-tab="tech" onclick="switchTab('tech')">Tech</button>
         <button class="tab-btn" data-tab="diy" onclick="switchTab('diy')">DIY</button>
       </div>
       <button id="back-btn" class="hidden" onclick="closeProject()">← Projects</button>
     </div>
+    <a class="brand" href="/">Bhavik <span>Sapru</span></a>
   </header>
 
   <!-- OVERVIEW -->
