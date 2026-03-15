@@ -49,7 +49,6 @@
       gap: 1rem;
     }
 
-    /* Left side: tabs + back btn */
     #header-left {
       display: flex;
       align-items: center;
@@ -337,23 +336,9 @@
     }
     .diy-placeholder::after { display: none !important; }
 
-    .placeholder-inner {
-      text-align: center;
-    }
-    .placeholder-plus {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 4.5rem;
-      color: var(--border);
-      line-height: 1;
-    }
-    .placeholder-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      color: var(--border2);
-      text-transform: uppercase;
-      margin-top: 0.6rem;
-    }
+    .placeholder-inner { text-align: center; }
+    .placeholder-plus { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: var(--border); line-height: 1; }
+    .placeholder-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; color: var(--border2); text-transform: uppercase; margin-top: 0.6rem; }
 
     /* ── PROJECT PANEL ── */
     #project-panel {
@@ -425,6 +410,26 @@
             </div>
           </div>
           <span class="proj-year">2024</span>
+          <span class="proj-arrow">→</span>
+        </div>
+
+        <div class="project-row" onclick="openProject('https://bhaviksapru.github.io/cloud-gate-monitor/')">
+          <span class="proj-num">02</span>
+          <div>
+            <h2 class="proj-name">Cloud Gate Monitor</h2>
+            <p class="proj-tagline">Home CCTV + gate monitoring on AWS — Raspberry Pi streams TAPO cameras to S3/CloudFront for live HLS and 7-day clip storage, TTLock gate events stored in DynamoDB with SMS alerts, all for ~$3/month.</p>
+            <div class="proj-tags">
+              <span>Raspberry Pi</span>
+              <span>AWS IoT</span>
+              <span>S3 + CloudFront</span>
+              <span>Lambda</span>
+              <span>DynamoDB</span>
+              <span>TTLock</span>
+              <span>React</span>
+              <span>ffmpeg</span>
+            </div>
+          </div>
+          <span class="proj-year">2025</span>
           <span class="proj-arrow">→</span>
         </div>
 
