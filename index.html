@@ -66,36 +66,6 @@
     }
     .brand span { color: var(--amber); }
 
-    #tab-nav {
-      display: flex;
-      gap: 0;
-      border: 1px solid var(--border2);
-      flex-shrink: 0;
-    }
-
-    .tab-btn {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.5rem 1.5rem;
-      background: none;
-      border: none;
-      color: var(--muted);
-      cursor: pointer;
-      transition: color 0.2s, background 0.2s;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .tab-btn + .tab-btn { border-left: 1px solid var(--border2); }
-
-    .tab-btn.active {
-      color: var(--amber);
-      background: var(--amber-glow);
-    }
-    .tab-btn:hover:not(.active) { color: var(--text); }
-
     #back-btn {
       font-family: 'DM Mono', monospace;
       font-size: 0.62rem;
@@ -131,13 +101,11 @@
       color: var(--muted);
     }
 
-    .tab-content {
-      display: none;
+    .projects-section {
       padding: 2.5rem 6vw 5rem;
     }
-    .tab-content.active { display: block; }
 
-    /* ── TECH: project list ── */
+    /* ── project list ── */
     .project-list {
       border: 1px solid var(--border);
       background: var(--border);
@@ -232,114 +200,6 @@
       transform: translateX(4px);
     }
 
-    /* ── DIY: card grid ── */
-    .diy-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-
-    .diy-card {
-      background: var(--bg);
-      cursor: pointer;
-      overflow: hidden;
-      transition: background 0.25s;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .diy-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--amber);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .diy-card:hover:not(.diy-placeholder) { background: var(--panel); }
-    .diy-card:hover::after { transform: scaleX(1); }
-
-    .diy-card-img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.75) saturate(0.8);
-      transition: filter 0.35s;
-    }
-    .diy-card:hover .diy-card-img {
-      filter: brightness(0.92) saturate(1);
-    }
-
-    .diy-card-body {
-      padding: 1.4rem 1.5rem;
-      flex: 1;
-    }
-
-    .diy-card-year {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.22em;
-      color: var(--amber);
-      text-transform: uppercase;
-      margin-bottom: 0.45rem;
-    }
-
-    .diy-card-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.65rem;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .diy-card-desc {
-      font-size: 0.79rem;
-      line-height: 1.6;
-      color: var(--muted);
-    }
-
-    .diy-card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding: 0.8rem 1.5rem;
-      border-top: 1px solid var(--border);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      color: var(--amber);
-      text-transform: uppercase;
-      gap: 0.4rem;
-    }
-
-    .diy-card-footer-arrow {
-      display: inline-block;
-      transition: transform 0.2s;
-    }
-    .diy-card:hover .diy-card-footer-arrow { transform: translateX(4px); }
-
-    .diy-placeholder {
-      cursor: default !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 340px;
-      border: 1px dashed var(--border2) !important;
-      background: none !important;
-    }
-    .diy-placeholder::after { display: none !important; }
-
-    .placeholder-inner { text-align: center; }
-    .placeholder-plus { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: var(--border); line-height: 1; }
-    .placeholder-label { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; color: var(--border2); text-transform: uppercase; margin-top: 0.6rem; }
-
     /* ── PROJECT PANEL ── */
     #project-panel {
       position: fixed;
@@ -359,16 +219,12 @@
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .diy-grid { grid-template-columns: 1fr 1fr; }
-    }
     @media (max-width: 600px) {
       .project-row {
         grid-template-columns: 40px 1fr 50px 28px;
         gap: 1rem;
         padding: 2rem 1.2rem;
       }
-      .diy-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -377,10 +233,6 @@
   <!-- HEADER -->
   <header id="site-header">
     <div id="header-left">
-      <div id="tab-nav">
-        <button class="tab-btn active" data-tab="tech" onclick="switchTab('tech')">Tech</button>
-        <button class="tab-btn" data-tab="diy" onclick="switchTab('diy')">DIY</button>
-      </div>
       <button id="back-btn" class="hidden" onclick="closeProject()">← Projects</button>
     </div>
     <a class="brand" href="/">Bhavik <span>Sapru</span></a>
@@ -390,8 +242,7 @@
   <div id="overview">
     <p class="one-liner">A log of things I've built.</p>
 
-    <!-- TECH -->
-    <div id="tab-tech" class="tab-content active">
+    <div class="projects-section">
       <div class="project-list">
 
         <div class="project-row" onclick="openProject('https://bhaviksapru.github.io/trade-engine/')">
@@ -433,39 +284,19 @@
           <span class="proj-arrow">→</span>
         </div>
 
-      </div>
-    </div>
-
-    <!-- DIY -->
-    <div id="tab-diy" class="tab-content">
-      <div class="diy-grid">
-
-        <div class="diy-card" onclick="openProject('https://bhaviksapru.github.io/projector/')">
-          <img class="diy-card-img"
-            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhryWwQUiKDvrx4pSpBRERR1G5ZFoivE0gYT9T_CBBjcTGz8b9eOVrkIbReWk_Wv1yAnLLqoM443WrozWCjH4JSaQoiidGO_MnwzYp1sfo1cYJzOQM0WFWcwPN7u8eLBoF__gGe8QiqRapq/s1600/l.JPG"
-            alt="Homemade HD Projector" loading="lazy"/>
-          <div class="diy-card-body">
-            <div class="diy-card-year">April 2015</div>
-            <div class="diy-card-name">Homemade HD Projector</div>
-            <p class="diy-card-desc">400W metal halide lamp, antique Cooke triplet lens, 17" Dell LCD panel. Projected onto 152 inches at 14 feet.</p>
+        <div class="project-row" onclick="openProject('https://bhaviksapru.github.io/projector/')">
+          <span class="proj-num">03</span>
+          <div>
+            <h2 class="proj-name">Homemade HD Projector</h2>
+            <p class="proj-tagline">400W metal halide lamp, antique Cooke triplet lens, 17" Dell LCD panel. Projected onto 152 inches at 14 feet.</p>
+            <div class="proj-tags">
+              <span>DIY</span>
+              <span>Optics</span>
+              <span>Electronics</span>
+            </div>
           </div>
-          <div class="diy-card-footer">
-            View build <span class="diy-card-footer-arrow">→</span>
-          </div>
-        </div>
-
-        <div class="diy-card diy-placeholder">
-          <div class="placeholder-inner">
-            <div class="placeholder-plus">+</div>
-            <div class="placeholder-label">Coming soon</div>
-          </div>
-        </div>
-
-        <div class="diy-card diy-placeholder">
-          <div class="placeholder-inner">
-            <div class="placeholder-plus">+</div>
-            <div class="placeholder-label">Coming soon</div>
-          </div>
+          <span class="proj-year">2015</span>
+          <span class="proj-arrow">→</span>
         </div>
 
       </div>
@@ -478,21 +309,12 @@
   </div>
 
   <script>
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
-      document.getElementById(`tab-${tab}`).classList.add('active');
-    }
-
     function openProject(url) {
       const overview  = document.getElementById('overview');
       const panel     = document.getElementById('project-panel');
       const frame     = document.getElementById('project-frame');
-      const tabNav    = document.getElementById('tab-nav');
       const backBtn   = document.getElementById('back-btn');
 
-      tabNav.style.display = 'none';
       backBtn.classList.remove('hidden');
 
       overview.classList.add('fading');
@@ -507,7 +329,6 @@
       const overview  = document.getElementById('overview');
       const panel     = document.getElementById('project-panel');
       const frame     = document.getElementById('project-frame');
-      const tabNav    = document.getElementById('tab-nav');
       const backBtn   = document.getElementById('back-btn');
 
       panel.classList.add('hidden');
@@ -518,7 +339,6 @@
         requestAnimationFrame(() => overview.classList.remove('fading'));
       });
 
-      tabNav.style.display = '';
       backBtn.classList.add('hidden');
     }
   </script>
