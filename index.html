@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Bhavik Sapru — software engineer building cloud infrastructure, algorithmic trading systems, and hardware projects.">
+  <meta name="author" content="Bhavik Sapru">
+  <meta name="robots" content="index, follow">
+  <title>Bhavik Sapru — Projects &amp; Portfolio</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://bhaviksapru.github.io/">
+  <meta property="og:title"       content="Bhavik Sapru — Projects &amp; Portfolio">
+  <meta property="og:description" content="Software engineer building cloud infrastructure, algorithmic trading systems, and hardware projects.">
+  <meta property="og:site_name"   content="Bhavik Sapru">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:title"       content="Bhavik Sapru — Projects &amp; Portfolio">
+  <meta name="twitter:description" content="Software engineer building cloud infrastructure, algorithmic trading systems, and hardware projects.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://bhaviksapru.github.io/">
+
+  <!-- JSON-LD: Person + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://bhaviksapru.github.io/#bhavik-sapru",
+        "name": "Bhavik Sapru",
+        "url": "https://bhaviksapru.github.io/",
+        "sameAs": [
+          "https://github.com/bhaviksapru"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://bhaviksapru.github.io/#website",
+        "url": "https://bhaviksapru.github.io/",
+        "name": "Bhavik Sapru",
+        "description": "Portfolio and project log of Bhavik Sapru.",
+        "author": { "@id": "https://bhaviksapru.github.io/#bhavik-sapru" }
+      }
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:         #080909;
+      --dark:       #0d0f0f;
+      --panel:      #111414;
+      --panel2:     #161919;
+      --border:     #212525;
+      --border2:    #2b3030;
+      --amber:      #f5a623;
+      --amber-dim:  #c47d0e;
+      --amber-glow: rgba(245,166,35,0.07);
+      --white:      #ede9e0;
+      --muted:      #5e6464;
+      --text:       #aaa69e;
+      --h:          58px;
+    }
+
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+    }
+
+    /* ── HEADER ── */
+    #site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--h);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6vw;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+
+    #header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand span { color: var(--amber); }
+
+    #back-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    #back-btn:hover { color: var(--amber); }
+    #back-btn.hidden { display: none; }
+
+    /* ── OVERVIEW ── */
+    #overview {
+      height: 100vh;
+      padding-top: var(--h);
+      overflow-y: auto;
+      transition: opacity 0.2s;
+    }
+    #overview.fading { opacity: 0; pointer-events: none; }
+
+    .one-liner {
+      padding: 2.8rem 6vw 0;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    .projects-section {
+      padding: 2.5rem 6vw 5rem;
+    }
+
+    /* ── project list ── */
+    .project-list {
+      border: 1px solid var(--border);
+      background: var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .project-row {
+      background: var(--bg);
+      display: grid;
+      grid-template-columns: 52px 1fr 70px 36px;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 2.5rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .project-row::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--amber);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s ease;
+    }
+
+    .project-row:hover { background: var(--panel); }
+    .project-row:hover::before { transform: scaleY(1); }
+
+    .proj-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--border2);
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .project-row:hover .proj-num { color: #3a4040; }
+
+    .proj-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.55rem;
+    }
+
+    .proj-tagline {
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+      max-width: 600px;
+    }
+
+    .proj-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .proj-tags span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+    }
+
+    .proj-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+
+    .proj-arrow {
+      font-size: 1.1rem;
+      color: var(--border2);
+      text-align: center;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .project-row:hover .proj-arrow {
+      color: var(--amber);
+      transform: translateX(4px);
+    }
+
+    /* ── PROJECT PANEL ── */
+    #project-panel {
+      position: fixed;
+      top: var(--h);
+      left: 0; right: 0; bottom: 0;
+      z-index: 100;
+      background: var(--bg);
+    }
+
+    #project-panel.hidden { display: none; }
+
+    #project-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .project-row {
+        grid-template-columns: 40px 1fr 50px 28px;
+        gap: 1rem;
+        padding: 2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <div id="header-left">
+      <button id="back-btn" class="hidden" onclick="closeProject()">← Projects</button>
+    </div>
+    <a class="brand" href="/">Bhavik <span>Sapru</span></a>
+  </header>
+
+  <!-- OVERVIEW -->
+  <div id="overview">
+    <p class="one-liner">A log of things I've built.</p>
+
+    <div class="projects-section">
+      <div class="project-list">
+
+        <div class="project-row" onclick="openProject('https://bhaviksapru.github.io/trade-engine/')">
+          <span class="proj-num">01</span>
+          <div>
+            <h2 class="proj-name">Trade Engine</h2>
+            <p class="proj-tagline">AWS execution layer that routes NinjaTrader signals directly to Interactive Brokers — eliminating the $100/month NinjaTrader execution fee entirely.</p>
+            <div class="proj-tags">
+              <span>AWS SAM</span>
+              <span>Step Functions</span>
+              <span>Lambda</span>
+              <span>ECS Fargate</span>
+              <span>FastAPI</span>
+              <span>DynamoDB</span>
+              <span>C#</span>
+            </div>
+          </div>
+          <span class="proj-year">2025</span>
+          <span class="proj-arrow">→</span>
+        </div>
+
+        <div class="project-row" onclick="openProject('https://bhaviksapru.github.io/cloud-gate-monitor/')">
+          <span class="proj-num">02</span>
+          <div>
+            <h2 class="proj-name">Cloud Gate Monitor</h2>
+            <p class="proj-tagline">Home CCTV + gate monitoring on AWS — Raspberry Pi streams TAPO cameras to S3/CloudFront for live HLS and 7-day clip storage, TTLock gate events stored in DynamoDB with SMS alerts, all for ~$3/month.</p>
+            <div class="proj-tags">
+              <span>Raspberry Pi</span>
+              <span>AWS IoT</span>
+              <span>S3 + CloudFront</span>
+              <span>Lambda</span>
+              <span>DynamoDB</span>
+              <span>TTLock</span>
+              <span>React</span>
+              <span>ffmpeg</span>
+            </div>
+          </div>
+          <span class="proj-year">2024</span>
+          <span class="proj-arrow">→</span>
+        </div>
+
+        <div class="project-row" onclick="openProject('https://bhaviksapru.github.io/projector/')">
+          <span class="proj-num">03</span>
+          <div>
+            <h2 class="proj-name">Homemade HD Projector</h2>
+            <p class="proj-tagline">400W metal halide lamp, antique Cooke triplet lens, 17" Dell LCD panel. Projected onto 152 inches at 14 feet.</p>
+            <div class="proj-tags">
+              <span>DIY</span>
+              <span>Optics</span>
+              <span>Electronics</span>
+            </div>
+          </div>
+          <span class="proj-year">2015</span>
+          <span class="proj-arrow">→</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT IFRAME PANEL -->
+  <div id="project-panel" class="hidden">
+    <iframe id="project-frame" src="" title="Project" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    function openProject(url) {
+      const overview  = document.getElementById('overview');
+      const panel     = document.getElementById('project-panel');
+      const frame     = document.getElementById('project-frame');
+      const backBtn   = document.getElementById('back-btn');
+
+      backBtn.classList.remove('hidden');
+
+      overview.classList.add('fading');
+      setTimeout(() => {
+        overview.style.display = 'none';
+        frame.src = url;
+        panel.classList.remove('hidden');
+      }, 180);
+    }
+
+    function closeProject() {
+      const overview  = document.getElementById('overview');
+      const panel     = document.getElementById('project-panel');
+      const frame     = document.getElementById('project-frame');
+      const backBtn   = document.getElementById('back-btn');
+
+      panel.classList.add('hidden');
+      frame.src = '';
+
+      overview.style.display = '';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => overview.classList.remove('fading'));
+      });
+
+      backBtn.classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
